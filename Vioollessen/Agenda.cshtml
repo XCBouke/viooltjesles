@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+    var username = "";
+    var password = "";
+    var errorMessage = "";
+
+    
+
+    if(IsPost)
+    {
+        username = Request["username"];
+        password = Request["password"];
+
+
+        if(WebSecurity.Login(username, password, true))
+        {
+            Response.Redirect("~/Home");
+        }
+        else
+        {
+            errorMessage="Error";
+        }
+
+    }
+}
+
+        <h1>Agenda</h1>
+
+
+        <h2>Login Page</h2>
+
+        <form method="post">
+            @if(WebSecurity.IsAuthenticated){
+                <p>Je bent ingelogd als @WebSecurity.CurrentUserName
+                   <a href="@Href("~/Logout")">Uitloggen</a></p>
+            }
+            <label for="username">Gebruikersnaam: </label>
+            <input type="text" id="username" name="username" value=""/><br>
+
+            <label for="password">Wachtwoord: </label>
+            <input type="password" id="password" name="password" value=""/><br><br>
+
+            <input type="submit" value="Inloggen" /><br>
+            
+            
+            <a href="@Href("~/Home")">Home</a>
+            <a href="@Href("~/Register")">Registreer</a> <br>
+
+            <a href="@Href("~/ResetPassword")">Wachtwoord vergeten</a>
+
+        </form>
+        <p>
+            @if(errorMessage != ""){
+                <span class="errorMessage">@errorMessage</span>
+            }
+        </p>
