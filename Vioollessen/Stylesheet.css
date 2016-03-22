@@ -1,39 +1,180 @@
-
-/* KLEINSTE SCHERM EERST */
-
-body {
-    background: url("../Images/Background.png") no-repeat center center;
-    background-size: cover;
-
-}
-
-#header p {
+body{
+  background: url(fotos/snaren.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 16px;
     
-    font-size:  25px;
-    text-align: center;
-    
+        
 }
-
-.container {
-   /*border: dashed green;*/ 
-}
-
-#header h1 {
-    font-size: 60px;
-    font-family: 'Tahoma', Arial;
-}
-
-#header {
-    font-family: 'Forte', Arial;
-    width: 65%;
-    /*border: solid blue;*/
-    margin: auto;
-    margin-top: 20px;
-    text-align: center;
-                        /*Links, Onder, Rechts, Boven*/
+.page-header{
+	text-align: center;
+	color: black;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-    color: darkred;
+    
+	}
+.Picture{
+    position: absolute;
+    
 }
+
+.background{
+   background-color: #660000;
+    filter: alpha(opacity=60);
+  /* IE */
+  -moz-opacity: 0.6;
+  /* Mozilla */
+  opacity: 0.6;
+  /* CSS3 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;   
+}
+.row content {
+}
+
+.content{
+	color: white;
+    position: relative;
+    z-index: 5;
+}
+.img{
+  display: inline-block;
+  vertical-align: middle;
+  max-height: 648px;
+  max-width: 100%;
+}
+
+#banner{
+	font-family: 'PT Serif', serif,;
+	width: 100%;
+	height: 150px;
+	top: auto;
+	
+}
+#banner h2{
+	margin: 30px auto;
+	color: black;
+	font-size: 50px; line-height: 60px; text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	 text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	vertical-align: middle;
+	text-decoration: underline;
+	font-family: 'Arvo', serif;
+}
+#banner h4{
+	
+	color: black;
+	font-size: 30px; line-height: 10px; text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	 text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	vertical-align: middle;
+	text-decoration: underline;
+	font-family: 'Arvo', serif;
+}
+
+
+
+header {
+	font-family: 'Josefin Sans', sans-serif;
+	height: auto;
+	width: 100%;
+	z-index: 10;
+}
+
+/*
+nav ul{
+overflow: hidden;
+color: #FFF;
+text-align: center;
+
+
+-webkit-transition: maxheigt 0.4s;
+-ms-transition: maxheigt 0.4s;
+-moz-transition: maxheigt 0.4s;
+-o-transition: maxheigt 0.4s;
+transition: maxheigt 0.4s;
+}
+
+nav ul li{
+	display: inline-block;
+	padding: 20px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-right: 70px;
+    color: #FFF;  
+   
+    
+}
+nav ul li:hover{
+	
+	border-radius: 5px;
+    text-decoration: none;
+    color: black;  
+}
+
+.handle{
+	width: 100%;
+	text-align: left;
+	box-sizing: border-box;
+	padding: 15px 10px;
+	cursor: pointer;
+	display: none;
+}
+
+
+a{
+    font-size: 30px; line-height: 10px; text-align: center;
+    opacity: .5;
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    opacity: 100;
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    
+}
+
+
+@media screen and (max-width: 1305px){
+	nav ul{
+		max-height: 0;
+	}
+	.showing{
+		max-height: 20em;
+	}
+	nav ul li{
+		box-sizing: border-box;
+		width: 100%;
+		padding: 15px;
+	}
+	.handle{
+		display: block;
+		text-align: right;
+	}
+}
+
+*/
+header h1{
+	color: #FFF;
+	width: auto;
+}
+
+.mainheader{ 
+	color: #FFF;
+}
+
+
+
 
 #menu {
     /*border: dashed pink;*/
@@ -75,38 +216,6 @@ body {
 
 
 
-#content {
-    /* Fallback for web browsers that don't support RGBa */
-    background-color: rgb(139, 2, 2);
-    background-color: rgba(139, 2, 2, 0.5);
-    
-   
-    /*border: solid red;*/
-    margin-top: 0%
-    
-}
-
-#content h1 {
-    color: white;
-    text-align: center;
-    font-family: 'Adobe Devanagari', 'Century Gothic';
-    font-size: 55px;
-}
-
-#content p {
-    color:  white;
-    margin-top: 30px;
-    margin-left: 15px;
-    margin-right: 10px;
-    
-}
-
-#profilepic {
-    /*border: solid blue;*/
-    float: right;
-    margin: 10px;
-}
-
 @media only screen and (min-width: 1187px) {
     #menu {
     /*border: dashed darkblue;*/
@@ -122,7 +231,7 @@ body {
     display: inline-block;
     /*border: dashed yellow;*/
     height: 80px;
-    padding: 10px 6.4%;
+    padding: 10px 7%;
     font-size: 30px;
     
 }
