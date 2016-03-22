@@ -66,7 +66,7 @@ body{
 	 text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 	vertical-align: middle;
 	text-decoration: underline;
-	font-family: 'Arvo', serif;
+	font-family: 'Abril Fatface', cursive;
 }
 #banner h4{
 	
@@ -77,7 +77,7 @@ body{
 	 text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 	vertical-align: middle;
 	text-decoration: underline;
-	font-family: 'Arvo', serif;
+	font-family: 'Abril Fatface', cursive;
 }
 
 
@@ -200,10 +200,11 @@ header h1{
 #menu a {
     color: white;
     text-decoration: none;
+    font-family: 'Abril Fatface', cursive;
 }
 
 #menu a:visited {
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
@@ -241,6 +242,7 @@ header h1{
     height: 150px;
     color: rgba(139, 2, 2, 0.0);
     text-decoration: none;
+    font-family: 'Abril Fatface', cursive;
 }
 
 #menu a:visited {
