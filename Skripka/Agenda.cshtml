@@ -1,0 +1,109 @@
+﻿@{
+    if (!WebSecurity.IsAuthenticated) {
+        Response.Redirect("~/Account/Login?message=1&returnUrl="
+            + Request.Url.LocalPath);
+    }
+
+    DateTime test_date = DateTime.Now;
+    double huidigweeknr = Math.Ceiling(Convert.ToDouble(test_date.DayOfYear) / 7);
+}
+
+<h2>Agenda</h2>
+@Html.ValidationSummary()
+<form method="post">
+<fieldset>
+    <legend>Huidig Week-nummer: @huidigweeknr</legend>
+    <p><label for="weeknr">Week Nummer: <br></label>
+        <input type="text" name="weeknr" value="@Request.Form["weeknr"]" />
+        @Html.ValidationMessage("weeknr")
+
+
+    <p><input type="submit" name="buttonSubmit" value="Agenda bekijken" /></p>
+</fieldset>
+</form>
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Agenda";
+
+    var db = Database.Open("Skripka");
+    var weeknr = "";
+    var messagetext = "- Code does not excist. Please try again.";
+    var messagetext2 = "- Afspraak gemaakt!";
+    var messagetext3 = "- Er is dan al een andere afspraak gemaakt!";
+
+    Validation.RequireField("weeknr", "Je moet een week nummer invullen.");
+    Validation.Add("weeknr", Validator.Integer("Week-nummer moet een nummer zijn."));
+    Validation.Add("weeknr", Validator.Range(1, 52, "Er zijn maar 52 weken in een jaar."));
+
+    if(!IsPost){
+            var selectedData = db.Query("SELECT * FROM Agenda WHERE Weeknr = @0", huidigweeknr);
+            var grid = new WebGrid(source: selectedData, rowsPerPage:20);
+            <h4>Je bekijkt nu week-nummer: @huidigweeknr</h4>
+            
+<div>
+        @grid.GetHtml(
+        tableStyle: "grid",
+        headerStyle: "head",
+        alternatingRowStyle: "alt",
+        columns: grid.Columns(
+        grid.Column("Tijd"),
+	    grid.Column("Maandag"),
+        grid.Column("Dinsdag"),
+        grid.Column("Woensdag"),
+        grid.Column("Donderdag"),
+        grid.Column("Vrijdag"),
+        grid.Column("Zaterdag"),
+        grid.Column(format: @<a href="~/AfspraakMaken?id=@item.ID">Maak een afspraak</a>)
+        )
+    )
+</div>
+}  
+    if(IsPost && !Request["buttonSubmit"].IsEmpty()){
+        messagetext = "";
+        messagetext2 = "";
+        messagetext3 = "";
+        if(Validation.IsValid()){
+            weeknr = Request.Form["weeknr"];
+
+            var selectedData2 = db.Query("SELECT * FROM Agenda WHERE Weeknr = @0", weeknr);
+            var grid = new WebGrid(source: selectedData2, rowsPerPage:20);
+
+    <h4>Je bekijkt nu week-nummer: @weeknr</h4>
+
+<div>
+        @grid.GetHtml(
+        tableStyle: "grid",
+        headerStyle: "head",
+        alternatingRowStyle: "alt",
+        columns: grid.Columns(
+        grid.Column("Tijd"),
+	    grid.Column("Maandag"),
+        grid.Column("Dinsdag"),
+        grid.Column("Woensdag"),
+        grid.Column("Donderdag"),
+        grid.Column("Vrijdag"),
+        grid.Column("Zaterdag"),
+        grid.Column(format: @<a href="~/AfspraakMaken?id=@item.ID">Maak een afspraak</a>)
+        )
+    )
+</div>
+
+
+     
+        }
+       
+    }
+
+@Html.ValidationSummary()
+    if (Request.QueryString["message"] == "1"){
+        <h4>@messagetext</h4>
+    }
+    if (Request.QueryString["message"] == "2"){
+        <h4>@messagetext2</h4>
+    }
+    if (Request.QueryString["message"] == "3"){
+        <h4>@messagetext3</h4>
+    }
+}
+
+

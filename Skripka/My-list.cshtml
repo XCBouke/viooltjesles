@@ -1,0 +1,68 @@
+﻿@{
+    if (!WebSecurity.IsAuthenticated) {
+        Response.Redirect("~/Account/Login?message=1&returnUrl="
+            + Request.Url.LocalPath);
+    }
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Agenda";
+
+    var db = Database.Open("Skripka");
+
+    var selectedData = db.Query("SELECT * FROM Agenda WHERE UserID = @0 ORDER BY importance DESC", WebSecurity.CurrentUserId);
+    var grid = new WebGrid(source: selectedData, rowsPerPage:20);
+
+    Validation.RequireField("name", "You must enter an item-name");
+    Validation.RequireField("importance", "You haven't entered the importance yet");
+    Validation.Add("importance", Validator.Integer("Importance must be an integer"));
+    Validation.Add("Importance", Validator.Range(1, 10, "Importance must be between 1 and 10"));
+
+    var name = "";
+    var importance = "";
+    var UserId = WebSecurity.CurrentUserId;
+
+    if(IsPost){
+        if(Validation.IsValid()){
+            name = Request.Form["name"];
+            importance = Request.Form["importance"]; 
+
+            var insertCommand = "INSERT INTO wishlists (name, importance, UserId) VALUES(@0, @1, @2)";
+            db.Execute(insertCommand, name, importance, UserId);
+
+            Response.Redirect("~/My-list");
+     
+        }
+       
+    }
+}
+
+<h2>Add a Wish</h2>
+@Html.ValidationSummary()
+<form method="post">
+<fieldset>
+    <legend>Wish Information</legend>
+
+    <p><label for="name">Name: <br></label>
+        <input type="text" name="Name" value="@Request.Form["name"]" />
+        @Html.ValidationMessage("name")
+
+    <p><label for="importance">Importance (1-10, 1 is not important, 10 is very important): <br></label>
+        <input type="text" name="Importance" value="@Request.Form["importance"]" />
+        @Html.ValidationMessage("importance")
+
+    <p><input type="submit" name="buttonSubmit" value="Add Wish" /></p>
+</fieldset>
+</form>
+
+<div>
+    @grid.GetHtml(
+        tableStyle: "grid",
+        headerStyle: "head",
+        alternatingRowStyle: "alt",
+        columns: grid.Columns(
+	    grid.Column("Name"),
+	    grid.Column("Importance"),
+	    grid.Column("Wishfulfiller"),
+        grid.Column(format: @<a href="~/EditWish?id=@item.ID">Edit/Delete</a>)
+        )
+    )
+</div>
