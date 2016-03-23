@@ -6,11 +6,6 @@
 
     DateTime test_date = DateTime.Now;
     double huidigweeknr = Math.Ceiling(Convert.ToDouble(test_date.DayOfYear) / 7);
-    var weeknr2 = huidigweeknr;
-    if (Request.QueryString["weeknr"]!= null){
-        weeknr2 = Convert.ToDouble(Request.QueryString["weeknr"]);
-    }
-    
 }
 
 <h2>Agenda</h2>
@@ -40,20 +35,10 @@
     Validation.Add("weeknr", Validator.Integer("Week-nummer moet een nummer zijn."));
     Validation.Add("weeknr", Validator.Range(1, 52, "Er zijn maar 52 weken in een jaar."));
 
-    if (Request.QueryString["message"] == "1"){
-        <h4>@messagetext</h4>
-    }
-    if (Request.QueryString["message"] == "2"){
-        <h4>@messagetext2</h4>
-    }
-    if (Request.QueryString["message"] == "3"){
-        <h4>@messagetext3</h4>
-    }
-
     if(!IsPost){
-            var selectedData = db.Query("SELECT * FROM Agenda WHERE Weeknr = @0", weeknr2);
+            var selectedData = db.Query("SELECT * FROM Agenda WHERE Weeknr = @0", huidigweeknr);
             var grid = new WebGrid(source: selectedData, rowsPerPage:20);
-            <h4>Je bekijkt nu week-nummer: @weeknr2</h4>
+            <h4>Je bekijkt nu week-nummer: @huidigweeknr</h4>
             
 <div>
         @grid.GetHtml(
@@ -110,7 +95,15 @@
     }
 
 @Html.ValidationSummary()
-
+    if (Request.QueryString["message"] == "1"){
+        <h4>@messagetext</h4>
+    }
+    if (Request.QueryString["message"] == "2"){
+        <h4>@messagetext2</h4>
+    }
+    if (Request.QueryString["message"] == "3"){
+        <h4>@messagetext3</h4>
+    }
 }
 
 
