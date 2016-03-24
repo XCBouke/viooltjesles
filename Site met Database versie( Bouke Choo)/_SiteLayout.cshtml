@@ -12,6 +12,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+    <style type="text/css">
+        .grid { margin: 4px; border-collapse: collapse; width: 600px; }
+        .grid th, .grid td { border: 1px solid #C0C0C0; padding: 5px; }
+        .head { background-color: #E8E8E8; font-weight: bold; color: #FFF; }
+        .alt { background-color: #E8E8E8; color: #000; }
+    </style>
+
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -52,18 +59,24 @@
 
 <div class="container">
 <div class="row content">
-<div class="col-md-12">
+<div class="col-md-8">
 <div class="content">
     @RenderBody()
+    @RenderSection("Scripts", required: false)
 </div>
 <div class="background"></div>
 </div>
 
-
+<div class="col-md-4">
+<div class="Picture">
+    <img class="img" src="fotos/selfie.jpg" alt="Viool" style=" width:100%;">
+</div>
+    
+</div>
 
 </div>
 </div>
-    @RenderSection("Scripts", required: false)
+    
 </body>
 
 </html>
