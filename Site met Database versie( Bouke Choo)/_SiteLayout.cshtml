@@ -59,24 +59,18 @@
 
 <div class="container">
 <div class="row content">
-<div class="col-md-8">
+<div class="col-md-12">
 <div class="content">
     @RenderBody()
-    @RenderSection("Scripts", required: false)
 </div>
 <div class="background"></div>
 </div>
 
-<div class="col-md-4">
-<div class="Picture">
-    <img class="img" src="fotos/selfie.jpg" alt="Viool" style=" width:100%;">
-</div>
-    
-</div>
+
 
 </div>
 </div>
-    
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>

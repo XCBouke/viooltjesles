@@ -1,6 +1,6 @@
 body{
   background: url(fotos/snaren.jpg) no-repeat center center fixed; 
-  -webkit-background-size: inherit;
+  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
@@ -11,17 +11,17 @@ body{
 }
 .page-header{
 	text-align: center;
-	color: black;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     
 	}
 .Picture{
-    position: absolute;
+    float: right;
+    margin: 10px 10px;
     
 }
 
 .background{
-   background-color: #660000;
+   background-color: #25160f;
     filter: alpha(opacity=60);
   /* IE */
   -moz-opacity: 0.6;
@@ -46,7 +46,7 @@ body{
 .img{
   display: inline-block;
   vertical-align: middle;
-  max-height: 648px;
+  max-height: 300px;
   max-width: 100%;
 }
 
@@ -59,7 +59,7 @@ body{
 }
 #banner h2{
 	margin: 30px auto;
-	color: black;
+    color: #25160f;
 	font-size: 50px; line-height: 60px; text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 5px;
@@ -70,7 +70,7 @@ body{
 }
 #banner h4{
 	
-	color: black;
+	color: #25160f;
 	font-size: 30px; line-height: 10px; text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 5px;
@@ -268,58 +268,3 @@ header h1{
 }
 
 }
-
-fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
-    fieldset legend {
-        display: none;
-    }
-
-    /* login page */
-    #loginForm {
-        border-right: none;
-        float: none;
-        width: auto;
-    }
-
-        #loginForm .validation-error {
-            display: block;
-            margin-left: 15px;
-        }
-
-#loginForm {
-    border-right: solid 2px #c8c8c8;
-    float: left;
-    width: 55%;
-}
-
-    #loginForm .validation-error {
-        display: block;
-        margin-left: 15px;
-    }
-
-    #loginForm .validation-summary-errors ul {
-        margin: 0;
-        padding: 0;
-    }
-
-    #loginForm .validation-summary-errors li {
-        display: inline;
-        list-style: none;
-        margin: 0;
-    }
-
-    #loginForm input {
-        width: 250px;
-    }
-
-    #loginForm input[type="checkbox"],
-    #loginForm input[type="submit"],
-    #loginForm input[type="button"],
-    #loginForm button {
-        width: auto;
-    }
