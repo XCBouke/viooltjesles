@@ -10,7 +10,7 @@
     WebSecurity.RequireAuthenticatedUser();
 
     Layout = "~/_SiteLayout.cshtml";
-    Page.Title = "Manage Account";
+    Page.Title = "Account Beheer";
 
     var action = Request.Form["action"];
 
@@ -140,18 +140,18 @@
         <ol>
             @if (hasLocalAccount) {
                 <li class="current-password">
-                    <label for="currentPassword" @if (!ModelState.IsValidField("currentPassword")) {<text>class="error-label"</text>}>Current password      </label>
+                    <label for="currentPassword" id="currentpasswordlabel" @if (!ModelState.IsValidField("currentPassword")) {<text>class="error-label"</text>}>Current password:</label>
                     <input type="password" id="currentPassword" name="currentPassword" @Validation.For("currentPassword")/>
                     @Html.ValidationMessage("currentPassword")
                 </li>
             }
             <li class="new-password">
-                <label for="newPassword" @if (!ModelState.IsValidField("newPassword")) {<text>class="error-label"</text>}>New password</label>
+                <label for="newPassword" id="newpasswordlabel" @if (!ModelState.IsValidField("newPassword")) {<text>class="error-label"</text>}>New password:</label>
                 <input type="password" id="newPassword" name="newPassword" @Validation.For("newPassword")/>
                 @Html.ValidationMessage("newPassword")
             </li>
             <li class="confirm-password">
-                <label for="confirmPassword" @if (!ModelState.IsValidField("confirmPassword")) {<text>class="error-label"</text>}>Confirm new password</label>
+                <label for="confirmPassword" id="confirmnewpasswordlabel" @if (!ModelState.IsValidField("confirmPassword")) {<text>class="error-label"</text>}>Confirm new password:</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" @Validation.For("confirmPassword")/>
                 @Html.ValidationMessage("confirmPassword")
             </li>

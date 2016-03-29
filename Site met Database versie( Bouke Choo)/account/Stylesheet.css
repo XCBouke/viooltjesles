@@ -274,3 +274,15 @@ button, input, select, textarea {
 .Registreer{
     color: white;
 }
+
+#currentpasswordlabel{
+    padding-right: 45px;
+}
+
+#newpasswordlabel{
+   padding-right: 62px; 
+}
+
+#confirmnewpasswordlabel{
+    padding-right: 10px;
+}
