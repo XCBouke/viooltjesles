@@ -1,0 +1,181 @@
+﻿@{
+    if (WebSecurity.CurrentUserName != "marinamuziek@gmail.com") {
+        Response.Redirect("~/Account/Login?message=2&returnUrl="
+            + Request.Url.LocalPath);
+    }
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Admin";
+
+    var db = Database.Open("Skripka");
+    var halfuur = db.QuerySingle("SELECT PrijsHalfUur FROM Admin WHERE ID = @0", 1).PrijsHalfUur;
+    var uur = db.QuerySingle("SELECT PrijsUur FROM Admin WHERE ID = @0", 1).PrijsUur;
+    var naam = db.QuerySingle("SELECT Naam FROM Admin WHERE ID = @0", 1).Naam;
+    var straat = db.QuerySingle("SELECT Straat FROM Admin WHERE ID = @0", 1).Straat;
+    var postcode = db.QuerySingle("SELECT Postcode FROM Admin WHERE ID = @0", 1).Postcode;
+    var huisnr = db.QuerySingle("SELECT Huisnr FROM Admin WHERE ID = @0", 1).Huisnr;
+    var plaats = db.QuerySingle("SELECT Plaats FROM Admin WHERE ID = @0", 1).Plaats;
+    var telefoon = db.QuerySingle("SELECT TelefoonNummer FROM Admin WHERE ID = @0", 1).TelefoonNummer;
+    var mobiel = db.QuerySingle("SELECT MobielNummer FROM Admin WHERE ID = @0", 1).MobielNummer;
+    var email = db.QuerySingle("SELECT Email FROM Admin WHERE ID = @0", 1).Email;
+    var bank = db.QuerySingle("SELECT Bank FROM Admin WHERE ID = @0", 1).Bank;
+
+
+if(IsPost && !Request["buttonhalfuur"].IsEmpty()){
+    var halfuur2 = Request.Form["halfuur"];
+    var Command1 = "UPDATE Admin SET PrijsHalfUur=@0 WHERE ID =@1";
+    db.Execute(Command1, halfuur2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonuur"].IsEmpty()){
+    var uur2 = Request.Form["uur"];
+    var Command2 = "UPDATE Admin SET PrijsUur=@0 WHERE ID =@1";
+    db.Execute(Command2, uur2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonnaam"].IsEmpty()){
+    var naam2 = Request.Form["naam"];
+    var Command3 = "UPDATE Admin SET Naam=@0 WHERE ID =@1";
+    db.Execute(Command3, naam2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonstraat"].IsEmpty()){
+    var straat2 = Request.Form["straat"];
+    var Command4 = "UPDATE Admin SET Straat=@0 WHERE ID =@1";
+    db.Execute(Command4, straat2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonpostcode"].IsEmpty()){
+    var postcode2 = Request.Form["postcode"];
+    var Command5 = "UPDATE Admin SET Postcode=@0 WHERE ID =@1";
+    db.Execute(Command5, postcode2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonhuisnr"].IsEmpty()){
+    var huisnr2 = Request.Form["huisnr"];
+    var Command6 = "UPDATE Admin SET Huisnr=@0 WHERE ID =@1";
+    db.Execute(Command6, huisnr2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonplaats"].IsEmpty()){
+    var plaats2 = Request.Form["plaats"];
+    var Command7 = "UPDATE Admin SET Plaats=@0 WHERE ID =@1";
+    db.Execute(Command7, plaats2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttontelefoon"].IsEmpty()){
+    var telefoon2 = Request.Form["telefoon"];
+    var Command8 = "UPDATE Admin SET TelefoonNummer=@0 WHERE ID =@1";
+    db.Execute(Command8, telefoon2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonmobiel"].IsEmpty()){
+    var mobiel2 = Request.Form["mobiel"];
+    var Command9 = "UPDATE Admin SET MobielNummer=@0 WHERE ID =@1";
+    db.Execute(Command9, mobiel2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonemail"].IsEmpty()){
+    var email2 = Request.Form["email"];
+    var Command10 = "UPDATE Admin SET Email=@0 WHERE ID =@1";
+    db.Execute(Command10, email2, 1);
+    Response.Redirect("~/Admin");
+}
+if(IsPost && !Request["buttonbank"].IsEmpty()){
+    var bank2 = Request.Form["bank"];
+    var Command11 = "UPDATE Admin SET Bank=@0 WHERE ID =@1";
+    db.Execute(Command11, bank2, 1);
+    Response.Redirect("~/Admin");
+}
+
+<form method="post">
+<fieldset>
+    <legend>Prijs per halfuur</legend>
+    <p><label for="halfuur"><br></label>
+        <input type="text" name="halfuur" value="@Request.Form["halfuur"]" placeholder="@halfuur" />
+
+
+    <p><input type="submit" name="buttonhalfuur" value="Verander Prijs per Halfuur" /></p>
+</fieldset>
+<fieldset>
+    <legend>Prijs per uur</legend>
+    <p><label for="uur"><br></label>
+        <input type="text" name="uur" value="@Request.Form["uur"]" placeholder="@uur" />
+
+
+    <p><input type="submit" name="buttonuur" value="Verander Prijs per uur" /></p>
+</fieldset>
+<fieldset>
+    <legend>Naam</legend>
+    <p><label for="naam"><br></label>
+        <input type="text" name="naam" value="@Request.Form["naam"]" placeholder="@naam" />
+
+
+    <p><input type="submit" name="buttonnaam" value="Verander je naam" /></p>
+</fieldset>
+<fieldset>
+    <legend>Straat</legend>
+    <p><label for="straat"><br></label>
+        <input type="text" name="straat" value="@Request.Form["straat"]" placeholder="@straat" />
+
+
+    <p><input type="submit" name="buttonstraat" value="Verander je straat naam" /></p>
+</fieldset>
+<fieldset>
+    <legend>Postcode</legend>
+    <p><label for="postcode"><br></label>
+        <input type="text" name="postcode" value="@Request.Form["postcode"]" placeholder="@postcode" />
+
+
+    <p><input type="submit" name="buttonpostcode" value="Verander je postcode" /></p>
+</fieldset>
+<fieldset>
+    <legend>Huis Nummer</legend>
+    <p><label for="huisnr"><br></label>
+        <input type="text" name="huisnr" value="@Request.Form["huisnr"]" placeholder="@huisnr" />
+
+
+    <p><input type="submit" name="buttonhuisnr" value="Verander je huis nummer" /></p>
+</fieldset>
+<fieldset>
+    <legend>Woonplaats</legend>
+    <p><label for="plaats"><br></label>
+        <input type="text" name="plaats" value="@Request.Form["plaats"]" placeholder="@plaats" />
+
+
+    <p><input type="submit" name="buttonplaats" value="Verander je woonplaats" /></p>
+</fieldset>
+<fieldset>
+    <legend>Telefoon Nummer</legend>
+    <p><label for="telefoon"><br></label>
+        <input type="text" name="telefoon" value="@Request.Form["telefoon"]" placeholder="@telefoon" />
+
+
+    <p><input type="submit" name="buttontelefoon" value="Verander je telefoon nummer" /></p>
+</fieldset>
+<fieldset>
+    <legend>Mobiele Nummer</legend>
+    <p><label for="mobiel"><br></label>
+        <input type="text" name="mobiel" value="@Request.Form["mobiel"]" placeholder="@mobiel" />
+
+
+    <p><input type="submit" name="buttonmobiel" value="Verander je mobiele nummer" /></p>
+</fieldset>
+<fieldset>
+    <legend>Email</legend>
+    <p><label for="email"><br></label>
+        <input type="text" name="email" value="@Request.Form["email"]" placeholder="@email" />
+
+
+    <p><input type="submit" name="buttonemail" value="Verander je Email" /></p>
+</fieldset>
+<fieldset>
+    <legend>Bank</legend>
+    <p><label for="bank"><br></label>
+        <input type="text" name="bank" value="@Request.Form["bank"]" placeholder="@bank" />
+
+
+    <p><input type="submit" name="buttonbank" value="Verander je bank gegevens" /></p>
+</fieldset>
+</form>
+
+}
