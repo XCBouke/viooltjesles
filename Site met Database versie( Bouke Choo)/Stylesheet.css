@@ -228,6 +228,22 @@ header h1{
 
 }
 
+.background{
+   background-color: #25160f;
+    filter: alpha(opacity=60);
+  /* IE */
+  -moz-opacity: 0.6;
+  /* Mozilla */
+  opacity: 0.6;
+  /* CSS3 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;   
+}
+
 #menu li {
     display: inline-block;
     /*border: dashed yellow;*/
@@ -261,7 +277,21 @@ header h1{
 
 @media only screen and (min-width: 985px) { 
     
-    
+    .background{
+   background-color: #25160f;
+    filter: alpha(opacity=60);
+  /* IE */
+  -moz-opacity: 0.6;
+  /* Mozilla */
+  opacity: 0.6;
+  /* CSS3 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;   
+}
 
 #menu li {
     font-size: 28px;

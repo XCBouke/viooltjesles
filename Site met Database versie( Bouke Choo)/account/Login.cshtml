@@ -65,7 +65,9 @@
     <h1>@Page.Title</h1>
 </hgroup>
 
+
 <section id="loginForm">
+
     <h2>Use a local account to log in.</h2>
     <form method="post">
         @AntiForgery.GetHtml()
@@ -83,7 +85,7 @@
                     @Html.ValidationMessage("email")
                 </li>
                 <li class="password">
-                    <label for="password" @if (!ModelState.IsValidField("password")) {<text>class="error-label"</text>}>Password</label>
+                    <label for="password" id="passwordlabel" @if (!ModelState.IsValidField("password")) {<text>class="error-label"</text>}>Password</label>
                     <input type="password" id="password" name="password" @Validation.For("password")/>
                     @* Write any password validation errors to the page *@
                     @Html.ValidationMessage("password")
@@ -94,7 +96,8 @@
         </fieldset>
     </form>
     <p>
-        <a href="~/Account/Register">Don't have a Account?</a>
-        <a href="~/Account/ForgotPassword">Did you forget your password?</a>
+        <a href="~/Account/Register"> <span class="Registreer">Regristreer</span></a>
+        
     </p>
 </section>
+
