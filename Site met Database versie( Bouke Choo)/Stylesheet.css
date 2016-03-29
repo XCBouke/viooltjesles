@@ -323,3 +323,14 @@ tr{
     color: white;
     text-decoration: none;
 }
+.Account{
+    float: right;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.logout{
+    float: right;
+    margin: 10px;
+    color: #fff
+}

@@ -31,6 +31,17 @@
 </head>
 
 <body>
+    @if (WebSecurity.IsAuthenticated) {
+    <div class="Account">
+            <a href="~/account/Manage">Manage</a>
+    </div>
+    <div class="logout">
+        <form id="logoutForm" action="~/Account/Logout" method="post">
+            @AntiForgery.GetHtml()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Uitloggen</a>
+        </form>
+    </div>
+    }
 
 <div class="row banner">
 	<div class="col-xs-12">

@@ -274,7 +274,6 @@ button, input, select, textarea {
 .Registreer{
     color: white;
 }
-
 #currentpasswordlabel{
     padding-right: 45px;
 }
@@ -285,4 +284,17 @@ button, input, select, textarea {
 
 #confirmnewpasswordlabel{
     padding-right: 10px;
+}
+
+
+.Account{
+    float: right;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.logout{
+    float: right;
+    margin: 10px;
+    color: #fff
 }
