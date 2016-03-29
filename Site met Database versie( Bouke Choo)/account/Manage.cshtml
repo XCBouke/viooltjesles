@@ -140,7 +140,7 @@
         <ol>
             @if (hasLocalAccount) {
                 <li class="current-password">
-                    <label for="currentPassword" @if (!ModelState.IsValidField("currentPassword")) {<text>class="error-label"</text>}>Current password</label>
+                    <label for="currentPassword" @if (!ModelState.IsValidField("currentPassword")) {<text>class="error-label"</text>}>Current password      </label>
                     <input type="password" id="currentPassword" name="currentPassword" @Validation.For("currentPassword")/>
                     @Html.ValidationMessage("currentPassword")
                 </li>
@@ -196,6 +196,5 @@
         </table>
     }
 
-    <h3>Add an external login</h3>
-    @RenderPage("~/Account/_ExternalLoginsList.cshtml")
+    
 </section>

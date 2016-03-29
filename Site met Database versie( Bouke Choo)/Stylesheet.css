@@ -268,3 +268,28 @@ header h1{
 }
 
 }
+
+legend{
+    color: white;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: black;
+}
+
+tr{
+    background-color: #A9A9A9;
+    color: black;
+}
+
+.terugagenda{
+    color:white ;
+}
+
+.terugagenda:hover{
+    color: white;
+    text-decoration: none;
+}
