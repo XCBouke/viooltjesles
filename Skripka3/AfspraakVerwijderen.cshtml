@@ -8,6 +8,7 @@
     var db = Database.Open("Skripka");
     var ID = Request.QueryString["id"];
     var tijd = db.QuerySingle("SELECT Tijd FROM Agenda WHERE ID = @0", ID).Tijd;
+    var adminmail = db.QuerySingle("SELECT Email FROM Admin WHERE ID = 1").Email;
     var username = db.QuerySingle("SELECT UserName FROM UserProfile WHERE UserId = @0", WebSecurity.CurrentUserId).UserName;
     var weeknr = db.QuerySingle("SELECT Weeknr FROM Agenda WHERE ID = @0", ID).Weeknr;
 
@@ -15,7 +16,7 @@
         {
             var maandag = db.QuerySingle("SELECT Maandag FROM Agenda WHERE ID =@0", 
                 Request.QueryString["id"]).Maandag;
-            if(maandag == username){
+            if(maandag == username || WebSecurity.CurrentUserName == adminmail){
                 var Command6 = "UPDATE Agenda SET Maandag=@0 WHERE ID =@1";
                 db.Execute(Command6, null, ID);
                 Response.Redirect("~/Agenda?message=1&weeknr="+weeknr);
@@ -29,7 +30,7 @@
         {
             var dinsdag = db.QuerySingle("SELECT Dinsdag FROM Agenda WHERE ID =@0", 
                 Request.QueryString["id"]).Dinsdag;
-            if(dinsdag == username){
+            if(dinsdag == username || WebSecurity.CurrentUserName == adminmail){
                 var Command5 = "UPDATE Agenda SET Dinsdag=@0 WHERE ID =@1";
                 db.Execute(Command5, null, ID);
                 Response.Redirect("~/Agenda?message=1&weeknr="+weeknr);
@@ -43,7 +44,7 @@
         {
             var woensdag = db.QuerySingle("SELECT Woensdag FROM Agenda WHERE ID =@0", 
                 Request.QueryString["id"]).Woensdag;
-            if(woensdag == username){
+            if(woensdag == username || WebSecurity.CurrentUserName == adminmail){
                 var Command4 = "UPDATE Agenda SET Woensdag=@0 WHERE ID =@1";
                 db.Execute(Command4, null, ID);
                 Response.Redirect("~/Agenda?message=1&weeknr="+weeknr);
@@ -57,7 +58,7 @@
         {
             var donderdag = db.QuerySingle("SELECT Donderdag FROM Agenda WHERE ID =@0", 
                 Request.QueryString["id"]).Donderdag;
-            if(donderdag == username){
+            if(donderdag == username || WebSecurity.CurrentUserName == adminmail){
                 var Command3 = "UPDATE Agenda SET Donderdag=@0 WHERE ID =@1";
                 db.Execute(Command3, null, ID);
                 Response.Redirect("~/Agenda?message=1&weeknr="+weeknr);
@@ -71,7 +72,7 @@
         {
             var vrijdag = db.QuerySingle("SELECT Vrijdag FROM Agenda WHERE ID =@0", 
                 Request.QueryString["id"]).Vrijdag;
-            if(vrijdag == username){
+            if(vrijdag == username || WebSecurity.CurrentUserName == adminmail){
                 var Command2 = "UPDATE Agenda SET Vrijdag=@0 WHERE ID =@1";
                 db.Execute(Command2, null, ID);
                 Response.Redirect("~/Agenda?message=1&weeknr="+weeknr);
@@ -85,7 +86,7 @@
         {
             var zaterdag = db.QuerySingle("SELECT Zaterdag FROM Agenda WHERE ID =@0", 
                 Request.QueryString["id"]).Zaterdag;
-            if(zaterdag == username){
+            if(zaterdag == username || WebSecurity.CurrentUserName == adminmail){
                 var Command1 = "UPDATE Agenda SET Zaterdag=@0 WHERE ID =@1";
                 db.Execute(Command1, null, ID);
                 Response.Redirect("~/Agenda?message=1&weeknr="+weeknr);

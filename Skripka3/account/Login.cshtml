@@ -8,7 +8,8 @@
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Log in";
 
-    var messagetext = "- You need to be logged in to see this page.";
+    var messagetext = "- Je moet ingelogd zijn om deze pagina te bekijken";
+    var messagetext2 = "- Alleen voor Admins";
     // Initialize general page variables
     var email = "";
     var password = "";
@@ -62,6 +63,9 @@
     }
         if (Request.QueryString["message"] == "1"){
         <h4>@messagetext</h4>
+    }
+        if (Request.QueryString["message"] == "2"){
+        <h4>@messagetext2</h4>
     }
 }
 

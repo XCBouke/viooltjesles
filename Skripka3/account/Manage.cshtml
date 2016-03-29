@@ -116,11 +116,15 @@
 }
 
 <p>You're logged in as <strong>@WebSecurity.CurrentUserName</strong>.</p>
-@if(hasLocalAccount){
-    if(WebSecurity.CurrentUserId == 17)
+@{
+var db = Database.Open("Skripka");
+var adminmail = db.QuerySingle("SELECT Email FROM Admin WHERE ID = 1").Email;
+if(hasLocalAccount){
+    if(WebSecurity.CurrentUserName == adminmail)
     {
         <a href="~/Admin">Admin</a>
     }
+}
 }
 
 @if (hasLocalAccount) {

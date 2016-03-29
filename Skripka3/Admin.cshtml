@@ -1,12 +1,13 @@
 ﻿@{
-    if (WebSecurity.CurrentUserName != "marinamuziek@gmail.com") {
+    var db = Database.Open("Skripka");
+    var adminmail = db.QuerySingle("SELECT Email FROM Admin WHERE ID = 1").Email;
+    if (WebSecurity.CurrentUserName != adminmail) {
         Response.Redirect("~/Account/Login?message=2&returnUrl="
             + Request.Url.LocalPath);
     }
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Admin";
 
-    var db = Database.Open("Skripka");
     var halfuur = db.QuerySingle("SELECT PrijsHalfUur FROM Admin WHERE ID = @0", 1).PrijsHalfUur;
     var uur = db.QuerySingle("SELECT PrijsUur FROM Admin WHERE ID = @0", 1).PrijsUur;
     var naam = db.QuerySingle("SELECT Naam FROM Admin WHERE ID = @0", 1).Naam;
@@ -86,6 +87,26 @@ if(IsPost && !Request["buttonbank"].IsEmpty()){
     db.Execute(Command11, bank2, 1);
     Response.Redirect("~/Admin");
 }
+if(IsPost && !Request["buttonreset"].IsEmpty()){
+    var max = db.QueryValue("SELECT MAX(ID) FROM Agenda");
+    for (int i=1;i < (max +1);i++){ 
+        if (db.QuerySingle("SELECT ID FROM Agenda WHERE ID =@0", i) != null) {
+                var Command12 = "UPDATE Agenda SET Maandag=@0 WHERE ID =@1";
+                db.Execute(Command12, null, i);
+                var Command13 = "UPDATE Agenda SET Dinsdag=@0 WHERE ID =@1";
+                db.Execute(Command13, null, i);
+                var Command14 = "UPDATE Agenda SET Woensdag=@0 WHERE ID =@1";
+                db.Execute(Command14, null, i);
+                var Command15 = "UPDATE Agenda SET Donderdag=@0 WHERE ID =@1";
+                db.Execute(Command15, null, i); 
+                var Command16 = "UPDATE Agenda SET Vrijdag=@0 WHERE ID =@1";
+                db.Execute(Command16, null, i);
+                var Command17 = "UPDATE Agenda SET Zaterdag=@0 WHERE ID =@1";
+                db.Execute(Command17, null, i); 
+                }    
+    }
+}
+
 
 <form method="post">
 <fieldset>
@@ -161,7 +182,7 @@ if(IsPost && !Request["buttonbank"].IsEmpty()){
     <p><input type="submit" name="buttonmobiel" value="Verander je mobiele nummer" /></p>
 </fieldset>
 <fieldset>
-    <legend>Email</legend>
+    <legend>Email (Waarschuwing: Verwijderd Admin rechten voor huidige email!)</legend>
     <p><label for="email"><br></label>
         <input type="text" name="email" value="@Request.Form["email"]" placeholder="@email" />
 
@@ -175,6 +196,11 @@ if(IsPost && !Request["buttonbank"].IsEmpty()){
 
 
     <p><input type="submit" name="buttonbank" value="Verander je bank gegevens" /></p>
+</fieldset>
+<fieldset>
+    <legend>Agenda Afspraken Resetten</legend>
+    <p><label for="reset"><br></label>
+<input type="submit" name="buttonreset" value="RESET AGENDA DATABASE" /></p>
 </fieldset>
 </form>
 
