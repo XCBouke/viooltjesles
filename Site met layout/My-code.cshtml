@@ -1,0 +1,63 @@
+﻿@{
+    if (!WebSecurity.IsAuthenticated) {
+        Response.Redirect("~/Account/Login?message=1&returnUrl="
+            + Request.Url.LocalPath);
+    }
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "My-code";
+
+    var db2 = Database.Open("StarterSite");
+
+    var selectedData2 = db2.Query("SELECT code FROM UserProfile WHERE UserId = @0", WebSecurity.CurrentUserId);
+    var grid = new WebGrid(source: selectedData2);
+
+    Validation.RequireField("code", "You must enter a Wishlist Code");
+    Validation.Add("code",Validator.StringLength(20,6,"Code length must be between 6 and 20 characters."));
+
+    var code = "";
+    var messagetext = "- Code already in use, Please try another one.";
+    if(IsPost){
+        if(Validation.IsValid()){
+            code = Request.Form["code"];
+            var codeavailable = db2.QueryValue("SELECT code FROM UserProfile WHERE code=@0",code);
+            if (codeavailable == null){
+
+            var insertCommand2 = "Update UserProfile SET code=@0 WHERE UserId = @1";
+            db2.Execute(insertCommand2, code, WebSecurity.CurrentUserId);
+
+            Response.Redirect("~/My-code");
+            }
+            else {
+            Response.Redirect("~/My-code?message=1");
+            }
+          }
+       }
+        if (Request.QueryString["message"] == "1"){
+        <h4>@messagetext</h4>
+        }
+     }    
+
+<h2>Edit your Code</h2>
+@Html.ValidationSummary()
+<form method="post">
+<fieldset>
+    <legend>Code Information</legend>
+    <p><label for="Code">Code (Used for sharing your Wishlist):<br></label>
+        <input type="text" name="Code" value="@Request.Form["code"]" placeholder="" />
+        @Html.ValidationMessage("code")
+    <p><input type="submit" name="buttonSubmit" value="Edit Code" /></p>
+</fieldset>
+</form>
+
+<div>
+    @grid.GetHtml(
+        tableStyle: "grid",
+        headerStyle: "head",
+        alternatingRowStyle: "alt",
+        columns: grid.Columns(
+	    //grid.Column(format: @<a href="~/EditMovie?id=@item.ID">Edit</a>),
+	    grid.Column("Code")
+	    //grid.Column(format: @<a href="~/DeleteMovie?id=@item.ID">Delete</a>)
+        )
+    )
+</div>

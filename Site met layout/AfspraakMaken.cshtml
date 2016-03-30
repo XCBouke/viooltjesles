@@ -1,0 +1,117 @@
+﻿@{
+        if (!WebSecurity.IsAuthenticated) {
+        Response.Redirect("~/Account/Login?message=1&returnUrl="
+            + Request.Url.LocalPath);
+    }
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Maak een Afspraak";
+    var db = Database.Open("Skripka");
+    var ID = Request.QueryString["id"];
+    var tijd = db.QuerySingle("SELECT Tijd FROM Agenda WHERE ID = @0", ID).Tijd;
+    var username = db.QuerySingle("SELECT UserName FROM UserProfile WHERE UserId = @0", WebSecurity.CurrentUserId).UserName;
+    var weeknr = db.QuerySingle("SELECT Weeknr FROM Agenda WHERE ID = @0", ID).Weeknr;
+
+        if(IsPost && !Request["buttonMaandag"].IsEmpty())
+        {
+            var maandag = db.QuerySingle("SELECT Maandag FROM Agenda WHERE ID =@0", 
+                Request.QueryString["id"]).Maandag;
+            if(maandag == null){
+                var Command6 = "UPDATE Agenda SET Maandag=@0 WHERE ID =@1";
+                db.Execute(Command6, username, ID);
+                Response.Redirect("~/Agenda?message=2&weeknr="+weeknr);
+            } 
+            else 
+            {
+                Response.Redirect("~/Agenda?message=3&weeknr="+weeknr); 
+            }
+        }
+        if(IsPost && !Request["buttonDinsdag"].IsEmpty())
+        {
+            var dinsdag = db.QuerySingle("SELECT Dinsdag FROM Agenda WHERE ID =@0", 
+                Request.QueryString["id"]).Dinsdag;
+            if(dinsdag == null){
+                var Command5 = "UPDATE Agenda SET Dinsdag=@0 WHERE ID =@1";
+                db.Execute(Command5, username, ID);
+                Response.Redirect("~/Agenda?message=2&weeknr="+weeknr);
+            } 
+            else 
+            {
+                Response.Redirect("~/Agenda?message=3&weeknr="+weeknr); 
+            }
+        }
+        if(IsPost && !Request["buttonWoensdag"].IsEmpty())
+        {
+            var woensdag = db.QuerySingle("SELECT Woensdag FROM Agenda WHERE ID =@0", 
+                Request.QueryString["id"]).Woensdag;
+            if(woensdag == null){
+                var Command4 = "UPDATE Agenda SET Woensdag=@0 WHERE ID =@1";
+                db.Execute(Command4, username, ID);
+                Response.Redirect("~/Agenda?message=2&weeknr="+weeknr);
+            } 
+            else 
+            {
+                Response.Redirect("~/Agenda?message=3&weeknr="+weeknr); 
+            }
+        }
+        if(IsPost && !Request["buttonDonderdag"].IsEmpty())
+        {
+            var donderdag = db.QuerySingle("SELECT Donderdag FROM Agenda WHERE ID =@0", 
+                Request.QueryString["id"]).Donderdag;
+            if(donderdag == null){
+                var Command3 = "UPDATE Agenda SET Donderdag=@0 WHERE ID =@1";
+                db.Execute(Command3, username, ID);
+                Response.Redirect("~/Agenda?message=2&weeknr="+weeknr);
+            } 
+            else 
+            {
+                Response.Redirect("~/Agenda?message=3&weeknr="+weeknr); 
+            }
+        }
+        if(IsPost && !Request["buttonVrijdag"].IsEmpty())
+        {
+            var vrijdag = db.QuerySingle("SELECT Vrijdag FROM Agenda WHERE ID =@0", 
+                Request.QueryString["id"]).Vrijdag;
+            if(vrijdag == null){
+                var Command2 = "UPDATE Agenda SET Vrijdag=@0 WHERE ID =@1";
+                db.Execute(Command2, username, ID);
+                Response.Redirect("~/Agenda?message=2&weeknr="+weeknr);
+            } 
+            else 
+            {
+                Response.Redirect("~/Agenda?message=3&weeknr="+weeknr); 
+            }
+        }
+        if(IsPost && !Request["buttonZaterdag"].IsEmpty())
+        {
+            var zaterdag = db.QuerySingle("SELECT Zaterdag FROM Agenda WHERE ID =@0", 
+                Request.QueryString["id"]).Zaterdag;
+            if(zaterdag == null){
+                var Command1 = "UPDATE Agenda SET Zaterdag=@0 WHERE ID =@1";
+                db.Execute(Command1, username, ID);
+                Response.Redirect("~/Agenda?message=2&weeknr="+weeknr);
+            } 
+            else 
+            {
+                Response.Redirect("~/Agenda?message=3&weeknr="+weeknr); 
+            }
+        }
+
+}
+
+<h2>Afspraak Maken</h2>
+@Html.ValidationSummary()
+
+<form method="post">
+    <fieldset>
+        <legend>Maak een afspraak voor @username om @tijd in week @weeknr op:</legend>
+
+          <br><input type="hidden" name="ID" value="@ID" /> <input type="submit" name="buttonMaandag" value="Maandag  " />
+        <br> <br><input type="hidden" name="ID" value="@ID" /> <input type="submit" name="buttonDinsdag" value="Dinsdag     " />
+        <br> <br><input type="hidden" name="ID" value="@ID" /> <input type="submit" name="buttonWoensdag" value="Woensdag " />
+        <br> <br><input type="hidden" name="ID" value="@ID" /> <input type="submit" name="buttonDonderdag" value="Donderdag" />
+        <br> <br><input type="hidden" name="ID" value="@ID" /> <input type="submit" name="buttonVrijdag" value="Vrijdag       " />
+        <br> <br><input type="hidden" name="ID" value="@ID" /> <input type="submit" name="buttonZaterdag" value="Zaterdag    " />
+        </p>
+    </fieldset>
+</form>
+<p><a href="~/Agenda"><span class="terugagenda">Terug naar Agenda</span></a></p>
