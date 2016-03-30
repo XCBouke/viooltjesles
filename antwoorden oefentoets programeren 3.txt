@@ -1,0 +1,126 @@
+1a  - minnetje zijn private
+    + is public		                                        (is hoofdstuk 10)
+
+naam, kapitein,bemanning,dekzwabber
+
+	p1 en p0 zijn instantie's
+        private type naam = meestal instantie (static is uitzondering)
+
+1b
+	zodat mensen van buitenaf niet jouw code kunnen aanpassen
+	
+	geen public
+
+1c      property 
+
+
+
+
+2
+
+Pirate p0=new Piraat()
+string z = p0.Naam;
+p0Naam="Piot";
+	public class Piraat
+	{
+		private string naam;
+		private int nummer;
+
+
+		public string Naam {
+		get{return naam;}
+		set{naam=value;}
+	}
+	public Piraat(string naam,int nummer)
+		{
+		this.naam=naam;
+		this.nummer=nummer;
+		}
+	public void VerhoogNummer()
+	{
+	nummer++;
+	}
+
+3.
+
+	public int BepaalDekzwabber()
+	{
+		int stappen =0;
+		int index=0;
+		
+		while(index >=0 && index <bemanning.Count)
+		{	dekzwabber = bemanning[index];
+			if(stappen%2==0)
+				{
+					index=index+bemanning[index].Nummer;
+						
+				}
+			else
+				{
+					index = bemanning[index].Nummer;
+				}
+			dekzwabber.VerhoogNummer();
+			stappen++;
+		}
+		return stappen;
+
+
+4.
+
+		Dictionary<string,int> plunder = new Dictionary<string,int>()
+		{
+			plunder.Add("goudstaven",20);
+			plunder.Add("slaven",40);
+		}
+		public void Addplunder(string item, int aantal)
+		{
+			if(plunder.ContainsKey(item))
+			{
+				plunder.Add(item,0);
+			}	
+			plunder[item]+=aantal;		
+		}
+
+
+
+
+5.
+
+		Node current = hood; 
+		Node prev = null;
+		while(current !=null)
+		{
+			if(current.Value>=0)
+			{
+			prev = current.Next;							prev.Next=current.next;
+			current = current.Next;	
+			}
+			else
+			{
+				if(current==hood)
+				{
+				hood = current.Next;
+				current=current.Next
+				}
+				else
+				{
+				 prev.Next=current.Next;
+				 current=current.next;
+				}
+			}								current=current.Next;
+		}									b) if(current ==hood)
+											   {hood = current.Next;
+											    current=current.Next;
+											   }
+
+
+
+
+
+
+
+
+
+	
+	}	
+
