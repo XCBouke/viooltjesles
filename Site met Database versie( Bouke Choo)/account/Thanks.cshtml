@@ -1,17 +1,17 @@
 ﻿@{
     // Set the layout page and page title
     Layout = "~/_SiteLayout.cshtml";
-    Page.Title = "Thanks for registering";
+    Page.Title = "U bent geregistreerd";
 }
 
 @if (!WebSecurity.IsAuthenticated) {
     <hgroup class="title">
         <h1>@Page.Title</h1>
-        <h2>But you're not done yet!</h2>
+        <h2>U bent nog niet klaar!</h2>
     </hgroup>
 
     <p>
-       An email with instructions on how to activate your account is on its way to you.
+       Er is een email naar u verzonden met daarin de bevestigingscode.
     </p>
 } else {
     <hgroup class="title">
