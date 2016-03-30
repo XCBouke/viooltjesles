@@ -1,10 +1,14 @@
 ﻿@{
     Layout = "_SiteLayout.cshtml";
+
+    var db = Database.Open("Skripka");
+    var halfuur = db.QuerySingle("SELECT PrijsHalfUur FROM Admin WHERE ID = @0", 1).PrijsHalfUur;
+    var uur = db.QuerySingle("SELECT PrijsUur FROM Admin WHERE ID = @0", 1).PrijsUur;
 }
 
 <h1>Lespakket</h1>
 
  <p> het lesgeld is:
-30 euro per uur
-15 per half uur
+@uur euro per uur
+@halfuur euro per half uur
  </p>

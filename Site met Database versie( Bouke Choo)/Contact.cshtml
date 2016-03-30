@@ -1,15 +1,26 @@
 ﻿@{
     Layout = "~/_SiteLayout.cshtml";
+
+    var db = Database.Open("Skripka");
+    var naam = db.QuerySingle("SELECT Naam FROM Admin WHERE ID = @0", 1).Naam;
+    var straat = db.QuerySingle("SELECT Straat FROM Admin WHERE ID = @0", 1).Straat;
+    var postcode = db.QuerySingle("SELECT Postcode FROM Admin WHERE ID = @0", 1).Postcode;
+    var huisnr = db.QuerySingle("SELECT Huisnr FROM Admin WHERE ID = @0", 1).Huisnr;
+    var plaats = db.QuerySingle("SELECT Plaats FROM Admin WHERE ID = @0", 1).Plaats;
+    var telefoon = db.QuerySingle("SELECT TelefoonNummer FROM Admin WHERE ID = @0", 1).TelefoonNummer;
+    var mobiel = db.QuerySingle("SELECT MobielNummer FROM Admin WHERE ID = @0", 1).MobielNummer;
+    var email = db.QuerySingle("SELECT Email FROM Admin WHERE ID = @0", 1).Email;
+    var bank = db.QuerySingle("SELECT Bank FROM Admin WHERE ID = @0", 1).Bank;
 }
 
 <h1>Contactgegevens</h1>
 
     <p>adres gegevens:</p>
-<p>Marina Michailava</p>
-<p>van Ostadestraat 39</p>
-<p>8932JZ Leeuwarden</p>
-<p>T: 0587074003</p>
-<p>M: 0617840425</p>
-<p>e: marinamuziek@gmail.com</p>
-<p>b: NL19 ASNB 0708 2485 51</p>
+<p>@naam</p>
+<p>@straat @huisnr</p>
+<p>@postcode @plaats</p>
+<p>T: @telefoon</p>
+<p>M: @mobiel</p>
+<p>e: @email</p>
+<p>b: @bank</p>
 	<p> t.n.v. Mw M.L. Mikhailava </p>
