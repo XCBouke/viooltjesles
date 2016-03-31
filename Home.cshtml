@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "_SiteLayout.cshtml";
+}
+
+<h1>Even voorstellen..</h1>
+
+<div class="Picture">
+   <img class="img" src="fotos/selfie1.jpg" alt="Viool" style=" width:100%;">
+</div>
+@{
+if (Request.QueryString["taal"] == null || Request.QueryString["taal"] == "nederlands"){
+
+<p>Hier vindt u een in Rusland gediplomeerde docente voor viool en altviool. Dat betekent dat er op een klassieke manier les wordt gegeven: met bladmuziek  en vioolmethodes en met warmte en aandacht voor de individuele leerling.</p>
+
+<p>Ik heb een uitgebreide educatieve ervaring en ben daardoor in staat voor iedere leerling een eigen lesprogramma samen te stellen.</p>
+
+<p>Zodoende heeft iedere leerling grote invloed op zijn of haar eigen repertoire (de stukken die gespeeld worden). </p>
+
+<p>De lessen worden in een huiselijke omgeving gegeven, met de mogelijkheid tot het begeleiden op de piano. Ook is het mogelijk naast vioollessen, pianolessen te volgen. </p>
+
+<p>De lessen duren 30 minuten of een uur. Wel is het voor een goed resultaat noodzakelijk dat de lessen regelmatig gehouden worden, bijvoorbeeld 1 keer per week.</p>
+
+<p>Natuurlijk bent u van harte welkom voor een gratis proefles.</p>
+
+<legend></legend><a href="~/Home?taal=russisch"><h4>Russisch</h4></a>
+
+}
+
+if (Request.QueryString["taal"] == "russisch"){
+
+<p>Будем знакомы - перед вами преподаватель по классу скрипки и альта, получивший образование в России. </p>
+
+<p>Уроки преподаются по классической русской методике и с большим вниманием к индивидуальным особенностям учеников. </p>
+
+<p>У меня богатый опыт работы по специальности, который позволяет выстраивать совместно с учениками индивидуальную программу уроков, с учётом всех творческих пожеланий.</p>
+
+<p>Преподавание ведётся в домашней обстановке. Ученики имеют возможность исполнять произведения в сопровождении фортепиано и, при желании, получить комбинированный урок игры на скрипке и фортепиано. </p>
+
+<p>Для получения оптимального результата, желательны регулярные уроки не реже 1 раза в неделю, продолжительностью не менее 30 минут. </p>
+
+<p>Естественно, первый пробный урок - бесплатный.</p>
+
+
+<legend></legend><a href="~/Home?taal=nederlands"><h4>Nederlands</h4></a>
+
+}
+}
