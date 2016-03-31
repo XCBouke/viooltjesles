@@ -57,6 +57,10 @@ body{
 	top: auto;
 	
 }
+
+h4{
+    color: white;
+}
 #banner h2{
 	margin: 30px auto;
     color: #25160f;
