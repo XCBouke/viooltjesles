@@ -298,24 +298,26 @@ header h1{
             float: right;
             color: #fff;
             margin-top: 10px;
+            color: #FFFFFF;
         }
     
         .Account:hover {
             float: right;
             color: #fff;
             margin-top: 10px;
+            color: #FFFFFF;
         }
 
         .logout {
             float: right;
             margin: 10px;
-            color: #fff;
+            color: #FFFFFF;
         }
     
         .logout:hover {
             float: right;
             margin: 10px;
-            color: #fff;
+            color: #FFFFFF;
         }
     
         .login {

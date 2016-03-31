@@ -20,6 +20,10 @@
     Validation.RequireField("password", "Voer een wachtwoord in.");
     Validation.Add("confirmPassword",
         Validator.EqualsTo("password", "Wachtwoorden komen niet overeen."));
+    Validation.Add("email", 
+        Validator.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$", 
+        "Geen geldig emailadres.")
+        );
     Validation.Add("username",
         Validator.StringLength(
             maxLength: 12,
