@@ -71,7 +71,7 @@ body{
 #banner h4{
 	
 	color: #25160f;
-	font-size: 30px; line-height: 10px; text-align: center;
+	font-size: 24px; line-height: 25px; text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 5px;
 	 text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
@@ -195,12 +195,14 @@ header h1{
     color: blue;
     text-align: center;
     font-size: 18px;  
+    
 }
 
 #menu a {
     color: white;
     text-decoration: none;
     font-family: 'Abril Fatface', cursive;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 #menu a:visited {
@@ -219,118 +221,126 @@ header h1{
 
 @media only screen and (min-width: 1187px) {
     #menu {
-    /*border: dashed darkblue;*/
-    width: 100%;
-    float: none;
-    margin: auto;
-    text-decoration: none;
-    text-align: center;
+        /*border: dashed darkblue;*/
+        width: 100%;
+        float: none;
+        margin: auto;
+        text-decoration: none;
+        text-align: center;
+    }
 
-}
+    .background {
+        background-color: #25160f;
+        filter: alpha(opacity=60);
+        /* IE */
+        -moz-opacity: 0.6;
+        /* Mozilla */
+        opacity: 0.6;
+        /* CSS3 */
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
 
-.background{
-   background-color: #25160f;
-    filter: alpha(opacity=60);
-  /* IE */
-  -moz-opacity: 0.6;
-  /* Mozilla */
-  opacity: 0.6;
-  /* CSS3 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  margin: 0;   
-}
+    #menu li {
+        display: inline-block;
+        /*border: dashed yellow;*/
+        height: 80px;
+        padding: 10px 7%;
+        font-size: 30px;
+    }
 
-#menu li {
-    display: inline-block;
-    /*border: dashed yellow;*/
-    height: 80px;
-    padding: 10px 7%;
-    font-size: 30px;
-    
-}
+    #menu a {
+        display: inline-block;
+        height: 150px;
+        color: rgba(139, 2, 2, 0.0);
+        text-decoration: none;
+        font-family: 'Abril Fatface', cursive;
+        text-shadow: none;
+    }
 
-#menu a {
-    display: inline-block;
-    height: 150px;
-    color: rgba(139, 2, 2, 0.0);
-    text-decoration: none;
-    font-family: 'Abril Fatface', cursive;
-}
+    #menu a:active {
+        display: inline-block;
+        height: 150px;
+        color: rgba(139, 2, 2, 0.0);
+        text-decoration: none;
+        font-family: 'Abril Fatface', cursive;
+        text-shadow: none;
+    }
 
-#menu a:visited {
-    color: rgba(139, 2, 2, 0.0);
-    text-decoration: none;
-}
+    #menu a:visited {
+        color: rgba(139, 2, 2, 0.0);
+        text-decoration: none;
+    }
 
-#menu a:hover {
-    color: darkred;
-    text-decoration: none;
-    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-    transition: all 0.5s ease;
+    #menu a:hover {
+        color: darkred;
+        text-decoration: none;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        transition: all 0.5s ease;
+    }
 }
-}
-/*VANAF 975 PIXELS SEGMENT*/
+    /*VANAF 975 PIXELS SEGMENT*/
 
-@media only screen and (min-width: 985px) { 
-    
-    .background{
-   background-color: #25160f;
-    filter: alpha(opacity=60);
-  /* IE */
-  -moz-opacity: 0.6;
-  /* Mozilla */
-  opacity: 0.6;
-  /* CSS3 */
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  margin: 0;   
-}
+    @media only screen and (min-width: 985px) {
 
-#menu li {
-    font-size: 28px;
-}
+        .background {
+            background-color: #25160f;
+            filter: alpha(opacity=60);
+            /* IE */
+            -moz-opacity: 0.6;
+            /* Mozilla */
+            opacity: 0.6;
+            /* CSS3 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
 
-}
+        #menu li {
+            font-size: 28px;
+        }
 
-legend{
-    color: white;
-}
+        legend {
+            color: white;
+        }
 
-button, input, select, textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    color: black;
-}
+        button, input, select, textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: black;
+        }
 
-tr{
-    background-color: #A9A9A9;
-    color: black;
-}
+        tr {
+            background-color: #A9A9A9;
+            color: black;
+        }
 
-.terugagenda{
-    color:white ;
-}
+        .terugagenda {
+            color: white;
+        }
 
-.terugagenda:hover{
-    color: white;
-    text-decoration: none;
-}
-.Account{
-    float: right;
-    color: #fff;
-    margin-top: 10px;
-}
+        .terugagenda:hover {
+            color: white;
+            text-decoration: none;
+        }
 
-.logout{
-    float: right;
-    margin: 10px;
-    color: #fff
-}
+        .Account {
+            float: right;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .logout {
+            float: right;
+            margin: 10px;
+            color: #fff;
+        }
+    }

@@ -71,7 +71,7 @@ body{
 #banner h4{
 	
 	color: black;
-	font-size: 30px; line-height: 10px; text-align: center;
+	font-size: 24px; line-height: 25px; text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 5px;
 	 text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
@@ -192,6 +192,11 @@ header h1{
 
 }
 
+
+ol {
+    list-style-type: none;
+    
+}
 fieldset {
     border: none;
     margin-bottom: 10px;
@@ -271,8 +276,9 @@ button, input, select, textarea {
     padding-right: 32px;
 }
 
-.Registreer{
+.Registreer {
     color: white;
+    text-decoration: none;
 }
 #currentpasswordlabel{
     padding-right: 115px;

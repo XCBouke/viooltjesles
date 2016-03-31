@@ -45,7 +45,7 @@
     Validation.RequireField("newPassword", "Wachtwoord is vereist.");
     Validation.Add("confirmPassword",
         Validator.Required("Bevestig je Wachtwoord."),
-        Validator.EqualsTo("newPassword", "Wachtwoord en bevestigings wachtwoord kloppen niet."));
+        Validator.EqualsTo("newPassword", "Wachtwoorden komen niet overeen."));
     Validation.Add("newPassword",
         Validator.StringLength(
             maxLength: Int32.MaxValue,
@@ -79,7 +79,7 @@
                     }
                 }
             } else {
-                ModelState.AddFormError("Wijzigen van wachtwoord onsuccesvol.");
+                ModelState.AddFormError("Error: wachtwoord niet gewijzigd.");
             }
         } else if (action == "removeLogin") {
             // Remove external login
@@ -172,7 +172,7 @@ if(hasLocalAccount){
                 Klik <a href="~/Account/ForgotPassword" title="Forgot password page">hier</a> als u het wachtwoord vergeten bent.
             </p>
         } else {
-            <button type="submit" name="action" value="password">Set Password</button>
+            <button type="submit" name="action" value="password">Wijzig wachtwoord</button>
         }
     </fieldset>
 </form>
