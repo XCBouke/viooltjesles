@@ -293,17 +293,41 @@ button, input, select, textarea {
 }
 
 
-.Account{
-    float: right;
-    color: #fff;
-    margin-top: 10px;
-}
+.Account {
+            float: right;
+            color: #fff;
+            margin-top: 10px;
+        }
+    
+        .Account:hover {
+            float: right;
+            color: #fff;
+            margin-top: 10px;
+        }
 
-.logout{
-    float: right;
-    margin: 10px;
-    color: #fff
-}
+        .logout {
+            float: right;
+            margin: 10px;
+            color: #fff;
+        }
+    
+        .logout:hover {
+            float: right;
+            margin: 10px;
+            color: #fff;
+        }
+    
+        .login {
+            float: right;
+            margin: 10px;
+            color: #FFFFFF;
+        }
+    
+        .login:hover {
+            float: right;
+            margin: 10px;
+            color: #FFFFFF;
+        }
 
 #emaillabel{
     padding-right: 42px;
