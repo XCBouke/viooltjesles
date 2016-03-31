@@ -304,3 +304,7 @@ button, input, select, textarea {
     margin: 10px;
     color: #fff
 }
+
+#emaillabel{
+    padding-right: 42px;
+}
